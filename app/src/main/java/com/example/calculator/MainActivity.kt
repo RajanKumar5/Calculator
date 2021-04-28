@@ -107,9 +107,6 @@ class MainActivity : AppCompatActivity() {
     private fun removeZeroAfterDecimal(result: String): String{
         var value = result
         var isZeroAfterDecimal = true
-        /*if(result.contains(".0")){
-            value = result.substring(0, result.length - 2)
-        }*/
 
         val decimalIndex = result.indexOf(".")
         for (i in (decimalIndex + 1) until result.length){
