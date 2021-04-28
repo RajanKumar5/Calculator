@@ -29,54 +29,107 @@ class MainActivity : AppCompatActivity() {
         lastDecimal = false
     }
 
-    fun onDecimal(view: View){
-        if (lastNumeric && !lastDecimal){
+    fun onDecimal(view: View) {
+        if (lastNumeric && !lastDecimal) {
             binding.tvInput.append(".")
             lastNumeric = false
             lastDecimal = true
         }
     }
 
-    fun onOperator(view: View){
-        if(lastNumeric && !isOperatorAdded(binding.tvInput.text.toString())){
+    fun onOperator(view: View) {
+        if (lastNumeric && !isOperatorAdded(binding.tvInput.text.toString())) {
             binding.tvInput.append((view as Button).text)
             lastNumeric = false
             lastDecimal = false
         }
     }
 
-    fun onEqual(view: View){
-        if(lastNumeric){
+    fun onEqual(view: View) {
+        if (lastNumeric) {
             var tvValue = binding.tvInput.text.toString()
             var prefix = ""
 
-            try{
-                if(tvValue.startsWith("-")){
+            try {
+                if (tvValue.startsWith("-")) {
                     prefix = "-"
                     tvValue = tvValue.substring(1)
                 }
 
-                if(tvValue.contains("-")){
+                if (tvValue.contains("-")) {
                     var splitValues = tvValue.split("-")
                     var valOne = splitValues[0]
                     var valTwo = splitValues[1]
 
-                    if(!prefix.isEmpty()){
+                    if (!prefix.isEmpty()) {
                         valOne = prefix + valOne
                     }
 
-                    binding.tvInput.text = (valOne.toDouble() - valTwo.toDouble()).toString()
+                    binding.tvInput.text = removeZeroAfterDecimal((valOne.toDouble() - valTwo.toDouble()).toString())
+                } else if (tvValue.contains("+")) {
+                    var splitValues = tvValue.split("+")
+                    var valOne = splitValues[0]
+                    var valTwo = splitValues[1]
+
+                    if (!prefix.isEmpty()) {
+                        valOne = prefix + valOne
+                    }
+
+                    binding.tvInput.text = removeZeroAfterDecimal((valOne.toDouble() + valTwo.toDouble()).toString())
+                } else if (tvValue.contains("*")) {
+                    var splitValues = tvValue.split("*")
+                    var valOne = splitValues[0]
+                    var valTwo = splitValues[1]
+
+                    if (!prefix.isEmpty()) {
+                        valOne = prefix + valOne
+                    }
+
+                    binding.tvInput.text = removeZeroAfterDecimal((valOne.toDouble() * valTwo.toDouble()).toString())
+                } else if (tvValue.contains("/")) {
+                    var splitValues = tvValue.split("/")
+                    var valOne = splitValues[0]
+                    var valTwo = splitValues[1]
+
+                    if (!prefix.isEmpty()) {
+                        valOne = prefix + valOne
+                    }
+
+                    binding.tvInput.text = removeZeroAfterDecimal((valOne.toDouble() / valTwo.toDouble()).toString())
                 }
-            }catch (e: ArithmeticException){
+
+            } catch (e: ArithmeticException) {
                 e.printStackTrace()
             }
         }
     }
 
-    private fun isOperatorAdded(value: String): Boolean{
-        return if(value.startsWith("-")){
+    private fun removeZeroAfterDecimal(result: String): String{
+        var value = result
+        var isZeroAfterDecimal = true
+        /*if(result.contains(".0")){
+            value = result.substring(0, result.length - 2)
+        }*/
+
+        val decimalIndex = result.indexOf(".")
+        for (i in (decimalIndex + 1) until result.length){
+            if(result[i].toString() != "0"){
+                isZeroAfterDecimal = false
+                break
+            }
+        }
+
+        if (isZeroAfterDecimal){
+            value = result.substring(0, decimalIndex)
+        }
+
+        return value
+    }
+
+    private fun isOperatorAdded(value: String): Boolean {
+        return if (value.startsWith("-")) {
             false
-        }else{
+        } else {
             value.contains("/") || value.contains("*")
                     || value.contains("+") || value.contains("-")
         }

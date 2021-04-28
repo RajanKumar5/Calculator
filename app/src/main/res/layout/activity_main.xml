@@ -11,8 +11,10 @@
         android:id="@+id/tvInput"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="#efefef"
+        android:background="@color/resultColor"
+        android:gravity="right|center_vertical|bottom"
         android:maxLength="12"
+        android:padding="10dp"
         android:textSize="48sp" />
 
     <!--Row 1-->
@@ -28,6 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="7" />
 
@@ -36,6 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="8" />
 
@@ -44,6 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="9" />
 
@@ -53,7 +58,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onOperator"
-            android:text="/" />
+            android:text="/"
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
     </LinearLayout>
 
     <!--Row 2-->
@@ -69,6 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="4" />
 
@@ -77,6 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="5" />
 
@@ -85,6 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="6" />
 
@@ -94,7 +104,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onOperator"
-            android:text="*" />
+            android:text="*"
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
     </LinearLayout>
 
     <!--Row 3-->
@@ -110,6 +122,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="1" />
 
@@ -118,6 +131,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="2" />
 
@@ -126,6 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/white"
             android:onClick="onDigit"
             android:text="3" />
 
@@ -135,7 +150,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onOperator"
-            android:text="-" />
+            android:text="-"
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
     </LinearLayout>
 
     <!--Row 4-->
@@ -152,7 +169,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onDecimal"
-            android:text="." />
+            android:text="."
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
 
         <Button
             android:id="@+id/btnZero"
@@ -160,7 +179,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onDigit"
-            android:text="0" />
+            android:text="0"
+            android:background="@color/white"/>
 
         <Button
             android:id="@+id/btnClear"
@@ -168,7 +188,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onClear"
-            android:text="CLR" />
+            android:text="CLR"
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
 
         <Button
             android:id="@+id/btnPlus"
@@ -176,7 +198,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onOperator"
-            android:text="+" />
+            android:text="+"
+            android:textColor="@color/operatorText"
+            android:background="@color/operatorBackground"/>
 
     </LinearLayout>
 
@@ -194,7 +218,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onEqual"
-            android:text="=" />
+            android:text="="
+            android:background="@color/operatorText"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
